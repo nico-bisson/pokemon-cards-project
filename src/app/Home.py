@@ -51,5 +51,7 @@ This view helps identify artist distribution, dominant illustrators, and
 creative trends throughout the Pokémon TCG.
 
 [status]: https://api.tcgdex.net/status
-"""
-, width="stretch", text_alignment="left")
+""",
+    width="stretch",
+    text_alignment="left",
+)
