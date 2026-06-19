@@ -10,7 +10,7 @@ TCGdex API.
 
 ## Features
 
-- Browse every available card featuring a selected Pokemon.
+- Browse cards by Pokemon, illustrator, or set from one unified explorer.
 - Filter physical and digital cards.
 - Rank Pokemon by their number of card appearances.
 - Rank illustrators and compare their contributions across series and sets.
@@ -66,7 +66,7 @@ with a newly generated one.
 ## Run the dashboard locally
 
 ```bash
-uv run streamlit run src/app/App.py
+uv run streamlit run src/app/Home.py
 ```
 
 Then open something like [http://localhost:8501](http://localhost:8501).

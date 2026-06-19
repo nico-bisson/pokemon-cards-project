@@ -23,12 +23,11 @@ The Japanese TCGdex database currently has limited coverage, with approximately
 42.42% of cards available. See the [TCGdex status page][status] for the latest
 information.
 
-#### 🔍 Pokémon Cards Viewer
+#### 🔍 Cards Viewer
 
-Browse and filter Pokémon species to view a gallery of all cards featuring your
-selected Pokémon. Export a complete list of matching cards to help track your
-collection.
-This view is ideal for collectors who focus on a specific Pokémon species.
+Browse cards by Pokémon, illustrator, or set in a unified gallery. 
+For example, select a Pokémon to view every available card featuring that species. 
+Refine the results with additional filters, then export the matching cards to help track your collection.
 
 #### 🃏🏆 Pokémon Leaderboard
 
