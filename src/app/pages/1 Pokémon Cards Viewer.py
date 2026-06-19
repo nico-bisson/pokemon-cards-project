@@ -281,7 +281,7 @@ display_df = df[
 ].copy()
 display_df.columns = ["Card ID", "Card Name", "Set", "Series", "Release Date"]
 
-st.dataframe(display_df, use_container_width=True, hide_index=True)
+st.dataframe(display_df, width="stretch", hide_index=True)
 
 csv = display_df.to_csv(index=False)
 
