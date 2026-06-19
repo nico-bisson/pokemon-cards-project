@@ -166,7 +166,7 @@ async def _fetch_cards_rest(lang: str, workers: int, batch_size: int, conn) -> N
             if result is None:
                 continue
 
-            set_id = result[3]
+            set_id = result[4]
             if conn and set_id is not None:
                 canonical_set_id = valid_set_ids.get(set_id.casefold())
                 if canonical_set_id is None:
@@ -175,7 +175,7 @@ async def _fetch_cards_rest(lang: str, workers: int, batch_size: int, conn) -> N
                     continue
 
                 if canonical_set_id != set_id:
-                    result = (*result[:3], canonical_set_id, *result[4:])
+                    result = (*result[:4], canonical_set_id, *result[5:])
 
             batch.append(result)
 

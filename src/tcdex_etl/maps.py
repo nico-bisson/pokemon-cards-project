@@ -90,6 +90,7 @@ def map_card_obj(c: Any) -> tuple:
     dex_ids = _pad(getattr(c, "dexId", None) or [], 5)
     return (
         c.id,
+        c.localId,
         c.name,
         c.category,
         c.set.id if c.set else None,  # set_id (FK)

@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS sets (
 
 CREATE TABLE IF NOT EXISTS cards (
     id          TEXT    NOT NULL PRIMARY KEY,
+    local_id    TEXT        NULL,
     name        TEXT    NOT NULL,
     category    TEXT    NOT NULL,
     set_id      TEXT        NULL REFERENCES sets (id),
@@ -113,6 +114,21 @@ def get_connection(db_path: str) -> sqlite3.Connection:
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON")
     conn.executescript(_SCHEMA)
+
+    card_columns = {
+        row[1] for row in conn.execute("PRAGMA table_info(cards)")
+    }
+    if "local_id" not in card_columns:
+        conn.execute("ALTER TABLE cards ADD COLUMN local_id TEXT")
+        conn.execute(
+            """
+            UPDATE cards
+            SET local_id = SUBSTR(id, LENGTH(set_id) + 2)
+            WHERE local_id IS NULL
+              AND set_id IS NOT NULL
+            """
+        )
+
     conn.commit()
     return conn
 
@@ -206,12 +222,12 @@ def insert_cards(conn: sqlite3.Connection, rows: list[tuple]) -> None:
     conn.executemany(
         """
         INSERT OR REPLACE INTO cards
-            (id, name, category, set_id,
+            (id, local_id, name, category, set_id,
              type_1, type_2,
              dex_id_1, dex_id_2, dex_id_3, dex_id_4, dex_id_5,
              hp, stage, evolve_from, retreat,
              rarity, illustrator, image, fetch_at)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         """,
         rows,
     )
