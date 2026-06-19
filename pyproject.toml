@@ -1,0 +1,30 @@
+[project]
+name = "pokemon-cards-project"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=3.0.3",
+    "plotly>=6.8.0",
+    "streamlit>=1.58.0",
+    "tqdm>=4.68.3",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["config"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
