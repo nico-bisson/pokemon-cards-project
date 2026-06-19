@@ -234,10 +234,7 @@ for _, row in df.iterrows():
     base_url = row.get("image")
 
     if pd.notna(base_url) and str(base_url).strip():
-        base_url = str(base_url).strip().rstrip("/")
-
-        quality_suffix = "high.webp"
-        image_url = f"{base_url}/{quality_suffix}"
+        image_url = f"{base_url}/{image_quality.lower()}.webp"
 
         valid_rows.append((row, image_url))
     else:
